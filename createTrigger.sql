@@ -4,7 +4,7 @@ CREATE TRIGGER calRentalCost
     FOR EACH ROW
 BEGIN
     UPDATE rentalContract
-    SET rentalCost = (SELECT baseCost + dailyCost * (julianday(NEW.dateBack) - julianday(New.dateOut))
+    SET rentalCost = (SELECT baseCost + dailyCost * (julianday(NEW.dateBack) - julianday(NEW.dateOut))
                       FROM Phone
                                JOIN PhoneModel USING (modelNumber)
                       WHERE Phone.IMEI = NEW.IMEI)
