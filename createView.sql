@@ -10,5 +10,5 @@ SELECT a.customerId,
        a.rentalCost
 FROM rentalContract a
          JOIN Phone b USING (IMEI)
-         JOIN PhoneModel c USING (modelNumber, modelName)
+         JOIN PhoneModel c USING (modelNumber)
 WHERE a.dateBack IS NOT NULL;
