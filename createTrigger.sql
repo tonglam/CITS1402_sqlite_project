@@ -6,7 +6,7 @@ BEGIN
     UPDATE rentalContract
     SET rentalCost = (SELECT baseCost + dailyCost * (julianday(NEW.dateBack) - julianday(dateOut))
                       FROM Phone
-                               JOIN PhoneModel USING (modelNumber, modelName)
+                               JOIN PhoneModel USING (modelNumber)
                       WHERE Phone.IMEI = NEW.IMEI)
     WHERE customerId = NEW.customerId
       AND IMEI = NEW.IMEI
