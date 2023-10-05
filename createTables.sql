@@ -125,7 +125,7 @@ CREATE TABLE rentalContract
     dateOut    TEXT,
     dateBack   TEXT,
     rentalCost REAL,
-    PRIMARY KEY (customerId, IMEI),
+    PRIMARY KEY (customerId, IMEI, dateOut),
     FOREIGN KEY (IMEI) REFERENCES Phone (IMEI) ON DELETE SET NULL,
     FOREIGN KEY (customerId) REFERENCES Customer (customerId)
 );
