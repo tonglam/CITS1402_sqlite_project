@@ -7,7 +7,7 @@ SELECT a.customerId,
                                                              substr(strftime('%Y', a.dateBack), 3)
            ELSE strftime('%Y', a.dateBack) || '/' || substr(strftime('%Y', a.dateBack, '+1 year'), 3)
            END                                               as taxYear,
-       sum(a.rentalCost)                                     as rentalCost
+       round(sum(a.rentalCost), 2)                           as rentalCost
 FROM rentalContract a
          JOIN Phone b USING (IMEI)
          JOIN PhoneModel c USING (modelNumber)
