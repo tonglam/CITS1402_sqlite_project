@@ -1,6 +1,6 @@
 CREATE VIEW CustomerSummary AS
 SELECT a.customerId,
-       c.modelName,
+       b.modelName,
        sum(julianday(a.dateBack) - julianday(a.dateOut) + 1) as daysRented,
        CASE
            WHEN strftime('%m-%d', a.dateBack) < '07-01' THEN strftime('%Y', a.dateBack, '-1 year') || '/' ||
@@ -9,7 +9,6 @@ SELECT a.customerId,
            END                                               as taxYear,
        round(sum(a.rentalCost), 2)                           as rentalCost
 FROM rentalContract a
-         JOIN Phone b USING (IMEI)
-         JOIN PhoneModel c USING (modelNumber)
+         LEFT JOIN Phone b USING (IMEI)
 WHERE a.dateBack IS NOT NULL
-GROUP BY a.customerId, c.modelName, taxYear;
+GROUP BY a.customerId, b.modelName, taxYear;
