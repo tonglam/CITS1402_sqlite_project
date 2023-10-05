@@ -1,8 +1,8 @@
 CREATE TABLE Phone
 (
-    IMEI        TEXT,
     modelNumber TEXT,
     modelName   TEXT,
+    IMEI        TEXT,
     PRIMARY KEY (IMEI),
     FOREIGN KEY (modelNumber, modelName) REFERENCES PhoneModel (modelNumber, modelName),
     CHECK (
