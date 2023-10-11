@@ -12,5 +12,5 @@ BEGIN
     WHERE customerId = NEW.customerId
       AND IMEI = NEW.IMEI
       AND dateOut = NEW.dateOut
-      AND OLD.rentalCost IS NULL;
+      AND OLD.dateBack IS NULL;
 END;
